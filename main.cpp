@@ -68,8 +68,8 @@ int main(int argc, char *argv[])
                     if (match.hasMatch()) {
                         QString matched = match.captured(0);
                         QString pad;
-                        pad = pad.leftJustified(PADLENGTH-match.captured(1).length() - QString("volatile char ").length(), ' ');
-                        header.write(QString("volatile char %1%4@%2; // %3\n").arg( match.captured(1)).arg( match.captured(2)).arg( match.captured(3)).arg(pad).toLocal8Bit());
+                        pad = pad.leftJustified(PADLENGTH-match.captured(1).length() - QString("volatile unsigned char ").length(), ' ');
+                        header.write(QString("volatile unsigned char %1%4@0x%2; // %3\n").arg( match.captured(1)).arg( match.captured(2)).arg( match.captured(3)).arg(pad).toLocal8Bit());
                     }
                     lastSFR = true;
                 } else {
@@ -87,16 +87,16 @@ int main(int argc, char *argv[])
                             int firstBitIndex = parts.first().toInt();
                             int lastBitIndex = parts.at(1).toInt();
                             QString pad;
-                            pad = pad.leftJustified(PADLENGTH-match.captured(2).length() - 7, ' ');
-                            header.write(QString("    %1%2 : %3;\n")
+                            pad = pad.leftJustified(PADLENGTH-match.captured(2).length() - QString("    unsigned char  : ").length(), ' ');
+                            header.write(QString("    unsigned char %1%2 : %3;\n")
                                          .arg(match.captured(2))
                                          .arg(pad)
                                          .arg(lastBitIndex - firstBitIndex + 1)
                                          .toLocal8Bit());
                         } else {
                             QString pad;
-                            pad = pad.leftJustified(PADLENGTH-match.captured(2).length() - 7, ' ');
-                            header.write(QString("    %1%2 : 1;\n")
+                            pad = pad.leftJustified(PADLENGTH-match.captured(2).length() - QString("    unsigned char  : ").length(), ' ');
+                            header.write(QString("    unsigned char %1%2 : 1;\n")
                                          .arg(match.captured(2))
                                          .arg(pad).toLocal8Bit());
                         }
