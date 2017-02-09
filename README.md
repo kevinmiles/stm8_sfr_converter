@@ -4,11 +4,10 @@ This is an utility for converting *.sfr files supplied by IAR STM8 Embedded Work
 Requirements: 
 Qt 5.8
 
-Compile: 
-qmake 
-make
+# Compile: 
+qmake && make
 
-Usage:
+# Usage:
 
 Install IAR EWB STM8 (Evaluation version is OK)
 
