@@ -27,7 +27,7 @@ stm8_headergen /home/mm/iostm8af5286.sfr /home/mm/iostm8af5286.h
 
 
 It will generate the registers bitfields in the following format:
-`
+```
 typedef struct
 {
   unsigned char IDR0        : 1;
@@ -41,4 +41,4 @@ typedef struct
 } __BITS_PA_IDR;
 volatile __BITS_PA_IDR  PA_IDR_bits					@0x5001;
 volatile char PA_IDR					@0x5001;
-`
+```
